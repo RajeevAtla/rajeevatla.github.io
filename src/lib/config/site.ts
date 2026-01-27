@@ -15,7 +15,6 @@ export const siteConfig = {
 	description:
 		"Exploring large-scale AI systems, multimodal models, and intelligent tooling.",
 	email: "rajeev@rajeevatla.com",
-	location: "New Brunswick, NJ",
 	socials: <SocialLink[]>[
 		{ title: "GitHub", href: "https://github.com/RajeevAtla" },
 		{ title: "LinkedIn", href: "https://www.linkedin.com/in/rajeev-atla" },
@@ -27,6 +26,5 @@ export const siteConfig = {
 export const navLinks: NavLink[] = [
 	{ title: "Home", href: "/" },
 	{ title: "About", href: "/about" },
-	{ title: "Projects", href: "/projects" },
-	{ title: "Contact", href: "/contact" },
+	{ title: "Projects", href: "/projects" }
 ];
