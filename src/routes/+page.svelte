@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { PageSection, projects, siteConfig, skills } from '$lib';
+	import { PageSection, siteConfig, skills } from '$lib';
 
 	const featured = projects.slice(0, 2);
 	const { title, tagline, description, socials } = siteConfig;
