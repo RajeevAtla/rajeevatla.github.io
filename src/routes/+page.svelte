@@ -85,12 +85,3 @@
 	</ul>
 </PageSection>
 
-<PageSection
-	eyebrow="Stay in touch"
-	title="Let's collaborate"
-	description="Share details about your roadmap or research direction. I reply quickly to thoughtful inquiries."
->
-	<a class="btn btn-primary" href={`mailto:${siteConfig.email}`}>
-		Start a conversation
-	</a>
-</PageSection>
