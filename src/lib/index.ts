@@ -1,7 +1,12 @@
 export { default as PageSection } from "./components/PageSection.svelte";
+export { default as SignalGrid } from "./components/SignalGrid.svelte";
 export { default as SiteFooter } from "./components/SiteFooter.svelte";
 export { default as SiteHeader } from "./components/SiteHeader.svelte";
 export { default as ThemeToggle } from "./components/ThemeToggle.svelte";
+export { default as DossierCard } from "./components/DossierCard.svelte";
+export { default as TimelineRail } from "./components/TimelineRail.svelte";
+export { default as MatrixBlock } from "./components/MatrixBlock.svelte";
 export * from "./config/site";
+export * from "./data/projects";
 export * from "./data/skills";
 export * from "./stores/theme";
