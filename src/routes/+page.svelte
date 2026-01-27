@@ -69,19 +69,3 @@
 		{/each}
 	</div>
 </PageSection>
-
-
-<PageSection
-	eyebrow="How I help"
-	title="Ways to collaborate"
-	description="I partner with teams to accelerate ML research, harden data pipelines, and deliver the tooling that keeps models in production."
->
-	<ul class="grid gap-3 md:grid-cols-3">
-		{#each ['ML platform and tooling', 'End-to-end data and evaluation pipelines', 'Rapid prototyping for AI products'] as service}
-			<li class="rounded-xl border border-base-200 bg-base-100 p-4 text-sm text-base-content/80">
-				{service}
-			</li>
-		{/each}
-	</ul>
-</PageSection>
-
