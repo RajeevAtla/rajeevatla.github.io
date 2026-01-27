@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { PageSection, siteConfig, skills } from '$lib';
-
-	const featured = projects.slice(0, 2);
 	const { title, tagline, description, socials } = siteConfig;
 
 	const resolve = (path: string) => `${base}${path}`;
@@ -29,34 +27,6 @@
 		</div>
 	</div>
 </section>
-
-<PageSection
-	eyebrow="Highlights"
-	title="Selected projects"
-	description="A snapshot of the work I enjoy: scaling machine learning workflows, building intelligent tools, and shipping reliable user experiences."
->
-	<div class="grid gap-4 md:grid-cols-2">
-		{#each featured as project}
-			<article class="space-y-3 rounded-xl border border-base-200 bg-base-100 p-5">
-				<h3 class="text-lg font-semibold text-primary">{project.title}</h3>
-				<p class="text-sm text-base-content/80">{project.summary}</p>
-				<div class="flex flex-wrap gap-2 text-xs text-base-content/60">
-					{#each project.tags as tag}
-						<span class="rounded-full border border-base-200 px-3 py-1">{tag}</span>
-					{/each}
-				</div>
-				<div class="flex flex-wrap gap-3 text-sm font-medium">
-					{#each project.links as link}
-						<a class="link link-primary" href={link.href} target="_blank" rel="noopener">{link.title}</a>
-					{/each}
-				</div>
-			</article>
-		{/each}
-	</div>
-	<p class="text-sm text-base-content/70">
-		Curious for more? <a class="link link-primary" href={resolve('/projects')}>Browse the full projects archive.</a>
-	</p>
-</PageSection>
 
 <PageSection
 	eyebrow="Education"
