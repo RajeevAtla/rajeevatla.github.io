@@ -42,15 +42,6 @@
 			{title}
 		</a>
 		<nav class="hidden items-center gap-2 text-sm font-medium sm:flex" aria-label="Primary">
-			{#each navLinks as link}
-				<a
-					href={resolveHref(link.href)}
-					aria-current={currentPath === link.href ? 'page' : undefined}
-					class={`btn btn-ghost btn-sm ${currentPath === link.href ? 'btn-active text-primary' : 'text-base-content/70 hover:text-primary'}`}
-				>
-					{link.title}
-				</a>
-			{/each}
 			<ThemeToggle />
 		</nav>
 		<div class="flex items-center gap-2 sm:hidden">

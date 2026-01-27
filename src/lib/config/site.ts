@@ -26,5 +26,4 @@ export const siteConfig = {
 export const navLinks: NavLink[] = [
 	{ title: "Home", href: "/" },
 	{ title: "About", href: "/about" },
-	{ title: "Projects", href: "/projects" }
 ];
