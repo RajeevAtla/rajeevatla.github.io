@@ -13,7 +13,7 @@ export const siteConfig = {
 	title: "Rajeev Atla",
 	tagline: "Machine learning engineer & Rutgers MS student",
 	description:
-		"Exploring large-scale AI systems, multimodal models, and intelligent tooling while studying Computer Engineering at Rutgers.",
+		"Exploring large-scale AI systems, multimodal models, and intelligent tooling.",
 	email: "rajeevatla101@gmail.com",
 	location: "New Brunswick, NJ",
 	socials: <SocialLink[]>[
