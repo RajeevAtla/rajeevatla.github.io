@@ -14,7 +14,7 @@ export const siteConfig = {
 	tagline: "Machine learning engineer & Rutgers MS student",
 	description:
 		"Exploring large-scale AI systems, multimodal models, and intelligent tooling.",
-	email: "rajeevatla101@gmail.com",
+	email: "rajeev@rajeevatla.com",
 	location: "New Brunswick, NJ",
 	socials: <SocialLink[]>[
 		{ title: "GitHub", href: "https://github.com/RajeevAtla" },
