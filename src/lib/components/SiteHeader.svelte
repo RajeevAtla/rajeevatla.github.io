@@ -36,26 +36,20 @@
 	};
 </script>
 
-<header
-	class="sticky top-0 z-20 border-b border-[color:var(--edge)] backdrop-blur-[14px] shadow-[0_20px_60px_-54px_var(--signal-strong)] [background:linear-gradient(180deg,color-mix(in_srgb,var(--paper)_92%,transparent),color-mix(in_srgb,var(--paper)_76%,transparent))]"
->
-	<div class="editorial-container flex items-center justify-between gap-4 py-4">
-		<a href={resolveHref('/')} class="inline-flex flex-col gap-1 no-underline">
-			<span class="[font-family:var(--font-display)] text-[clamp(1.2rem,2.2vw,1.55rem)] font-bold tracking-[0.03em] text-[color:var(--ink)]">
-				{title}
-			</span>
-			<span class="[font-family:var(--font-mono)] text-[0.66rem] font-bold uppercase tracking-[0.22em] text-[color:var(--ink-muted)]">
-				ML Systems Dossier
-			</span>
+<header class="site-header">
+	<div class="site-header__inner editorial-container">
+		<a href={resolveHref('/')} class="site-header__brand">
+			<span class="site-header__title">{title}</span>
+			<span class="site-header__subtitle">ML Systems Dossier</span>
 		</a>
-		<nav class="hidden sm:inline-flex sm:items-center sm:gap-[0.6rem]" aria-label="Primary">
+		<nav class="site-header__nav" aria-label="Primary">
 			<ThemeToggle />
 		</nav>
-		<div class="inline-flex items-center gap-2 sm:hidden">
+		<div class="site-header__mobile">
 			<ThemeToggle />
 			<button
 				type="button"
-				class="inline-flex h-[2.35rem] w-[2.35rem] items-center justify-center rounded-[0.85rem] border border-[color:var(--edge)] bg-[color:color-mix(in_srgb,var(--paper-strong)_86%,transparent)] text-[color:var(--ink)] transition-all duration-150 ease-out hover:-translate-y-[1px] hover:border-[color:var(--signal-strong)]"
+				class="site-header__menu-btn"
 				on:click={toggleMobile}
 				aria-expanded={mobileOpen}
 				aria-controls="mobile-nav"
@@ -76,13 +70,13 @@
 		</div>
 	</div>
 	{#if mobileOpen}
-		<ul id="mobile-nav" class="editorial-container grid gap-2 pb-4">
+		<ul id="mobile-nav" class="site-header__mobile-nav editorial-container">
 			{#each navLinks as link}
 				<li>
 					<a
 						href={resolveHref(link.href)}
 						aria-current={currentPath === link.href ? 'page' : undefined}
-						class={`inline-flex items-center rounded-[0.95rem] border border-[color:var(--edge)] bg-[color:color-mix(in_srgb,var(--paper-strong)_90%,transparent)] px-[0.9rem] py-[0.7rem] [font-family:var(--font-mono)] text-[0.74rem] font-bold uppercase tracking-[0.12em] text-[color:var(--ink-muted)] no-underline transition-all duration-150 ease-out hover:-translate-y-[1px] hover:border-[color:var(--signal-strong)] hover:text-[color:var(--ink)] ${currentPath === link.href ? '-translate-y-[1px] border-[color:var(--signal-strong)] text-[color:var(--ink)]' : ''}`}
+						class={`site-header__mobile-link ${currentPath === link.href ? 'is-active' : ''}`}
 						on:click={closeMobile}
 					>
 						{link.title}
@@ -92,3 +86,139 @@
 		</ul>
 	{/if}
 </header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		backdrop-filter: blur(14px);
+		background:
+			linear-gradient(
+				180deg,
+				color-mix(in srgb, var(--paper) 92%, transparent),
+				color-mix(in srgb, var(--paper) 76%, transparent)
+			);
+		border-bottom: 1px solid var(--edge);
+		box-shadow: 0 20px 60px -54px var(--signal-strong);
+	}
+
+	.site-header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: 1rem;
+		gap: 1rem;
+	}
+
+	a.site-header__brand {
+		display: inline-flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		text-decoration: none;
+	}
+
+	.site-header__title {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+		color: var(--ink);
+		letter-spacing: 0.03em;
+	}
+
+	.site-header__subtitle {
+		font-family: var(--font-mono);
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--ink-muted);
+	}
+
+	.site-header__nav {
+		display: none;
+	}
+
+	.site-header__mobile {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.site-header__menu-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.35rem;
+		height: 2.35rem;
+		border-radius: 0.85rem;
+		border: 1px solid var(--edge);
+		background: color-mix(in srgb, var(--paper-strong) 86%, transparent);
+		color: var(--ink);
+		transition:
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.site-header__menu-btn:hover {
+		border-color: var(--signal-strong);
+		transform: translateY(-1px);
+	}
+
+	.site-header__mobile-nav {
+		display: grid;
+		gap: 0.5rem;
+		padding-bottom: 1rem;
+	}
+
+	a.site-header__mobile-link {
+		display: inline-flex;
+		align-items: center;
+		border: 1px solid var(--edge);
+		border-radius: 0.95rem;
+		padding: 0.7rem 0.9rem;
+		font-family: var(--font-mono);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--ink-muted);
+		background: color-mix(in srgb, var(--paper-strong) 90%, transparent);
+		transition:
+			color 160ms ease,
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	a.site-header__mobile-link:hover,
+	a.site-header__mobile-link.is-active {
+		color: var(--ink);
+		border-color: var(--signal-strong);
+		transform: translateY(-1px);
+	}
+
+	@media (min-width: 640px) {
+		.site-header__nav {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.6rem;
+		}
+
+		.site-header__mobile {
+			display: none;
+		}
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>

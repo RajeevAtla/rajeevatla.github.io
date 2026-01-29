@@ -5,32 +5,20 @@
 	const year = new Date().getFullYear();
 </script>
 
-<footer class="[padding-block:clamp(2.8rem,6vw,4.2rem)]">
-	<div class="editorial-container grid">
-		<div class="editorial-surface editorial-veil grid gap-[1.4rem] rounded-[1.4rem] border border-[color:var(--edge)] p-[clamp(1.4rem,3vw,2.2rem)] min-[840px]:grid-cols-[1.1fr_1fr] min-[840px]:items-center">
-			<div class="grid gap-2">
+<footer class="site-footer">
+	<div class="editorial-container site-footer__inner">
+		<div class="site-footer__panel editorial-surface editorial-veil">
+			<div class="site-footer__meta">
 				<p class="editorial-label">Transmission</p>
-				<p class="[font-family:var(--font-display)] text-[clamp(1.7rem,3vw,2.3rem)] tracking-[0.03em] text-[color:var(--ink)]">
-					{title}
-				</p>
-				<p class="text-[0.95rem] text-[color:var(--ink-muted)]">© {year} {title}</p>
+				<p class="site-footer__title">{title}</p>
+				<p class="site-footer__copy">© {year} {title}</p>
 			</div>
-			<div class="grid gap-4 min-[840px]:justify-items-end">
-				<a
-					class="inline-flex items-center justify-center rounded-[1rem] border border-[color:var(--signal-strong)] bg-[color:color-mix(in_srgb,var(--signal)_46%,transparent)] px-4 py-[0.8rem] [font-family:var(--font-mono)] text-[0.82rem] font-bold uppercase tracking-[0.14em] text-[color:var(--accent-strong)] no-underline transition-all duration-150 ease-out hover:-translate-y-[2px] hover:bg-[color:color-mix(in_srgb,var(--accent-warm)_12%,transparent)] hover:text-[color:var(--accent-warm)] min-[840px]:justify-self-end"
-					href={`mailto:${email}`}
-				>
-					{email}
-				</a>
-				<ul class="m-0 flex list-none flex-wrap gap-[0.6rem] p-0" aria-label="Social links">
+			<div class="site-footer__actions">
+				<a class="site-footer__email" href={`mailto:${email}`}>{email}</a>
+				<ul class="site-footer__links" aria-label="Social links">
 					{#each socials as social}
 						<li>
-							<a
-								class="inline-flex items-center rounded-[0.95rem] border border-[color:var(--edge)] bg-[color:color-mix(in_srgb,var(--paper-strong)_92%,transparent)] px-[0.85rem] py-[0.6rem] [font-family:var(--font-mono)] text-[0.74rem] font-bold uppercase tracking-[0.12em] text-[color:var(--ink-muted)] no-underline transition-all duration-150 ease-out hover:-translate-y-[1px] hover:border-[color:var(--signal-strong)] hover:text-[color:var(--ink)]"
-								href={social.href}
-								rel="noopener"
-								target="_blank"
-							>
+							<a class="site-footer__link" href={social.href} rel="noopener" target="_blank">
 								{social.title}
 							</a>
 						</li>
@@ -40,3 +28,120 @@
 		</div>
 	</div>
 </footer>
+
+<style>
+	.site-footer {
+		padding-block: clamp(2.8rem, 6vw, 4.2rem);
+	}
+
+	.site-footer__inner {
+		display: grid;
+	}
+
+	.site-footer__panel {
+		border-radius: 1.4rem;
+		padding: clamp(1.4rem, 3vw, 2.2rem);
+		display: grid;
+		gap: 1.4rem;
+		border: 1px solid var(--edge);
+	}
+
+	.site-footer__meta {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.site-footer__title {
+		font-family: var(--font-display);
+		font-size: clamp(1.7rem, 3vw, 2.3rem);
+		color: var(--ink);
+		letter-spacing: 0.03em;
+	}
+
+	.site-footer__copy {
+		color: var(--ink-muted);
+		font-size: 0.95rem;
+	}
+
+	.site-footer__actions {
+		display: grid;
+		gap: 1rem;
+	}
+
+	a.site-footer__email {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--signal-strong);
+		border-radius: 1rem;
+		padding: 0.8rem 1rem;
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--accent-strong);
+		background: color-mix(in srgb, var(--signal) 46%, transparent);
+		transition:
+			transform 180ms ease,
+			background-color 180ms ease,
+			color 180ms ease;
+	}
+
+	a.site-footer__email:hover {
+		transform: translateY(-2px);
+		color: var(--accent-warm);
+		background: color-mix(in srgb, var(--accent-warm) 12%, transparent);
+	}
+
+	.site-footer__links {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+	}
+
+	a.site-footer__link {
+		display: inline-flex;
+		align-items: center;
+		border: 1px solid var(--edge);
+		border-radius: 0.95rem;
+		padding: 0.6rem 0.85rem;
+		font-family: var(--font-mono);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--ink-muted);
+		background: color-mix(in srgb, var(--paper-strong) 92%, transparent);
+		transition:
+			color 160ms ease,
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	a.site-footer__link:hover {
+		color: var(--ink);
+		border-color: var(--signal-strong);
+		transform: translateY(-1px);
+	}
+
+	@media (min-width: 840px) {
+		.site-footer__panel {
+			grid-template-columns: 1.1fr 1fr;
+			align-items: center;
+		}
+
+		.site-footer__actions {
+			justify-items: end;
+		}
+
+		.site-footer__email {
+			justify-self: end;
+		}
+	}
+</style>
