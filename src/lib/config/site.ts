@@ -1,9 +1,3 @@
-export type NavLink = {
-	title: string;
-	href: string;
-	description?: string;
-};
-
 export type SocialLink = {
 	title: string;
 	href: string;
@@ -22,8 +16,3 @@ export const siteConfig = {
 		{ title: "Blog", href: "https://rajeevatla.com/blog" },
 	],
 };
-
-export const navLinks: NavLink[] = [
-	{ title: "Home", href: "/" },
-	{ title: "About", href: "/about" },
-];
