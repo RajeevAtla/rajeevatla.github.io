@@ -1,9 +1,11 @@
-<script lang="ts">
+<script context="module" lang="ts">
 	export type MatrixCategory = {
 		title: string;
 		skills: string[];
 	};
+</script>
 
+<script lang="ts">
 	export let category: MatrixCategory;
 	export let index = 0;
 </script>
