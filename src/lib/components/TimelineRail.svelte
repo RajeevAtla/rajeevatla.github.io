@@ -1,12 +1,10 @@
-<script context="module" lang="ts">
+<script lang="ts">
 	export type TimelineItem = {
 		period: string;
 		title: string;
 		detail: string;
 	};
-</script>
 
-<script lang="ts">
 	export let items: TimelineItem[] = [];
 </script>
 
