@@ -13,9 +13,9 @@
 
 <section class="mx-auto w-full max-w-5xl px-4 py-16">
 	<div class="space-y-6">
-		<p class="text-xs uppercase tracking-eyebrow text-primary/70">{tagline}</p>
-		<h1 class="text-4xl font-semibold font-serif text-primary sm:text-5xl">
-			Hi, I'm {title.split(' ')[0]}. I turn research ideas into production ML systems.
+		<p class="text-s uppercase tracking-eyebrow text-primary">{tagline}</p>
+		<h1 class="text-5xl font-serif text-primary sm:text-5xl">
+			hi, I'm {title.split(' ')[0]}. i turn research ideas into production ML systems.
 		</h1>
 		<p class="max-w-2xl text-base text-base-content/80 leading-relaxed">
 			{description}

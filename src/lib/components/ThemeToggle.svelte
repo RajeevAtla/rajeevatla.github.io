@@ -44,8 +44,8 @@
 <style>
 	.sr-only {
 		position: absolute;
-		width: 1px;
-		height: 1px;
+		width: 2px;
+		height: 2px;
 		padding: 0;
 		margin: -1px;
 		overflow: hidden;

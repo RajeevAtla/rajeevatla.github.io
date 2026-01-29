@@ -8,6 +8,22 @@
 	exclude: properties, radialprogress;
 }
 
+@font-face {
+	font-family: "Poiret One";
+	src: url("/fonts/PoiretOne/PoiretOne-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Ramboia";
+	src: url("/fonts/Ramboia/RamboiaTestVF.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 @plugin "daisyui/theme" {
 	name: "rajevlight";
 	default: true;
@@ -46,6 +62,8 @@
 	color-scheme: dark;
 	--link-color: #7dd3fc;
 	--link-hover-color: #38bdf8;
+	--font-sans: "Poiret One", system-ui, -apple-system, sans-serif;
+	--font-serif: "Ramboia", "Poiret One", system-ui, -apple-system, serif;
 }
 
 :root[data-theme="rajevlight"] {
@@ -60,13 +78,27 @@
 	--link-hover-color: #38bdf8;
 }
 
+html {
+	font-size: 125%;
+}
+
 body {
 	min-height: 100vh;
 	background-color: var(--color-base-100);
 	color: var(--color-base-content);
+	font-family: var(--font-sans);
 	transition:
 		background-color 0.3s ease,
 		color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-serif);
 }
 
 a:not(.btn),
