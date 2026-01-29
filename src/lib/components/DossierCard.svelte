@@ -7,142 +7,43 @@
 	const delay = String(Math.min(3, (index % 4))) as '0' | '1' | '2' | '3';
 </script>
 
-<article class="dossier-card editorial-surface editorial-veil reveal-up" data-delay={delay}>
-	<header class="dossier-card__header">
-		<div class="dossier-card__title-block">
+<article
+	class="editorial-surface editorial-veil reveal-up relative flex min-h-full flex-col gap-[1.1rem] overflow-clip rounded-[1.35rem] p-[clamp(1.2rem,2.6vw,1.9rem)] transition-all duration-200 ease-out before:pointer-events-none before:absolute before:inset-[-40%_50%_auto_-10%] before:h-[70%] before:rotate-[-8deg] before:opacity-[0.18] before:content-[''] before:[background:radial-gradient(closest-side,var(--signal-strong),transparent_72%)] hover:-translate-y-[6px] hover:border-[color:var(--edge-strong)] hover:shadow-[0_60px_120px_-90px_var(--signal-strong),0_24px_60px_-36px_color-mix(in_srgb,black_38%,transparent)]"
+	data-delay={delay}
+>
+	<header class="flex items-start justify-between gap-4">
+		<div class="flex flex-col gap-[0.45rem]">
 			<p class="editorial-label">Case File</p>
-			<h3 class="dossier-card__title">{project.title}</h3>
+			<h3 class="text-[clamp(1.45rem,2.4vw,1.9rem)] text-[color:var(--ink)] [text-wrap:balance]">
+				{project.title}
+			</h3>
 		</div>
 		<span class="editorial-stamp">{project.period}</span>
 	</header>
 
-	<p class="dossier-card__summary">{project.summary}</p>
+	<p class="max-w-[60ch] text-[0.98rem] text-[color:var(--ink-muted)]">{project.summary}</p>
 
-	<div class="dossier-card__tags" aria-label="Project tags">
+	<div class="flex flex-wrap gap-2" aria-label="Project tags">
 		{#each project.tags as tag}
-			<span class="dossier-card__tag">{tag}</span>
+			<span
+				class="rounded-[0.85rem] border border-[color:var(--edge)] bg-[color:color-mix(in_srgb,var(--paper-strong)_92%,transparent)] px-[0.68rem] py-[0.4rem] [font-family:var(--font-mono)] text-[0.72rem] font-semibold uppercase tracking-[0.06em] text-[color:var(--ink-muted)]"
+			>
+				{tag}
+			</span>
 		{/each}
 	</div>
 
-	<footer class="dossier-card__links">
+	<footer class="mt-auto flex flex-wrap gap-[0.8rem] pt-[0.4rem]">
 		{#each project.links as link}
-			<a class="dossier-card__link" href={link.href} target="_blank" rel="noopener">
+			<a
+				class="inline-flex items-center gap-2 border-b border-[color:var(--signal-strong)] pb-[0.15rem] [font-family:var(--font-mono)] text-[0.78rem] font-bold uppercase tracking-[0.12em] text-[color:var(--accent-strong)] no-underline transition-all duration-150 ease-out hover:translate-x-[2px] hover:border-[color:var(--accent-warm)] hover:text-[color:var(--accent-warm)]"
+				href={link.href}
+				target="_blank"
+				rel="noopener"
+			>
 				<span>{link.title}</span>
 				<span aria-hidden="true">↗</span>
 			</a>
 		{/each}
 	</footer>
 </article>
-
-<style>
-	.dossier-card {
-		display: flex;
-		flex-direction: column;
-		gap: 1.1rem;
-		border-radius: 1.35rem;
-		padding: clamp(1.2rem, 2.6vw, 1.9rem);
-		min-height: 100%;
-		position: relative;
-		overflow: clip;
-		transition:
-			transform 220ms ease,
-			border-color 220ms ease,
-			box-shadow 220ms ease;
-	}
-
-	.dossier-card::before {
-		content: "";
-		position: absolute;
-		inset: -40% 50% auto -10%;
-		height: 70%;
-		background: radial-gradient(closest-side, var(--signal-strong), transparent 72%);
-		opacity: 0.18;
-		transform: rotate(-8deg);
-		pointer-events: none;
-	}
-
-	.dossier-card:hover {
-		transform: translate3d(0, -6px, 0);
-		border-color: var(--edge-strong);
-		box-shadow:
-			0 60px 120px -90px var(--signal-strong),
-			0 24px 60px -36px color-mix(in srgb, black 38%, transparent);
-	}
-
-	.dossier-card__header {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 1rem;
-	}
-
-	.dossier-card__title-block {
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-	}
-
-	.dossier-card__title {
-		font-size: clamp(1.45rem, 2.4vw, 1.9rem);
-		color: var(--ink);
-		text-wrap: balance;
-	}
-
-	.dossier-card__summary {
-		color: var(--ink-muted);
-		font-size: 0.98rem;
-		max-width: 60ch;
-	}
-
-	.dossier-card__tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.dossier-card__tag {
-		border: 1px solid var(--edge);
-		border-radius: 0.85rem;
-		padding: 0.4rem 0.68rem;
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		font-weight: 600;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--ink-muted);
-		background: color-mix(in srgb, var(--paper-strong) 92%, transparent);
-	}
-
-	.dossier-card__links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.8rem;
-		margin-top: auto;
-		padding-top: 0.4rem;
-	}
-
-	a.dossier-card__link {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		border-bottom: 1px solid var(--signal-strong);
-		padding-bottom: 0.15rem;
-		font-family: var(--font-mono);
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--accent-strong);
-		text-decoration: none;
-		transition:
-			color 160ms ease,
-			border-color 160ms ease,
-			transform 160ms ease;
-	}
-
-	a.dossier-card__link:hover {
-		color: var(--accent-warm);
-		border-color: var(--accent-warm);
-		transform: translateX(2px);
-	}
-</style>
