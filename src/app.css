@@ -33,12 +33,12 @@
 	--color-primary-content: #f8fafc;
 	--color-secondary: #7c3aed;
 	--color-accent: #f472b6;
-	--color-neutral: #1f2937;
+	--color-neutral: #000000;
 	--color-neutral-content: #f8fafc;
 	--color-base-100: #f4f6ff;
 	--color-base-200: #e2e8f0;
 	--color-base-300: #cbd5f5;
-	--color-base-content: #1f2937;
+	--color-base-content: #000000;
 }
 
 @plugin "daisyui/theme" {
