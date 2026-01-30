@@ -17,7 +17,7 @@
 		<h1 class="text-5xl font-serif text-primary sm:text-5xl">
 			hi, I'm {title.split(' ')[0]}. i turn research ideas into production ML systems.
 		</h1>
-		<p class="max-w-2xl text-base text-base-content/80 leading-relaxed">
+		<p class="max-w-2xl text-base text-base-content leading-relaxed">
 			{description}
 		</p>
 		<div class="flex flex-wrap gap-3">
