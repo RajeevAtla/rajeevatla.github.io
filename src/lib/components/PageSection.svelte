@@ -13,7 +13,7 @@
 		{/if}
 		<h2 class="text-3xl font-semibold text-primary sm:text-4xl">{title}</h2>
 		{#if description}
-			<p class="max-w-3xl text-base text-base-content/80 leading-relaxed">{description}</p>
+			<p class="max-w-3xl text-base text-base-content leading-relaxed">{description}</p>
 		{/if}
 	</header>
 	<div class="space-y-6">
