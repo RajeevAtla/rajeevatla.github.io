@@ -1,7 +1,10 @@
 # Personal Website (new)
 
 [![Biome](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/biome.yml/badge.svg)](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/biome.yml)
-[![Build and deploy](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/build.yml)
+[![Build and deploy](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/RajeevAtla/rajeevatla.github.io/actions/workflows/build.yml
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
+[![Linted with Biome](https://img.shields.io/badge/Linted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
+[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
 
 This repository contains the source code for my personal site, built with SvelteKit and Tailwind CSS.
 
