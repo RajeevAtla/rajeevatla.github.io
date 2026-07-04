@@ -4,12 +4,12 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "farm",
-		"build": "farm build",
-		"preview": "farm preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"biome:check": "biome ci src farm.config.ts postcss.config.cjs svelte.config.js tailwind.config.ts",
+		"dev": "bunx --bun farm",
+		"build": "bunx --bun farm build",
+		"preview": "bunx --bun farm preview",
+		"check": "bunx --bun svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "bunx --bun svelte-check --tsconfig ./tsconfig.json --watch",
+		"biome:check": "bunx --bun biome ci src farm.config.ts postcss.config.cjs svelte.config.js tailwind.config.ts",
 		"biome:format": "bunx --bun biome format --write ."
 	},
 	"devDependencies": {
