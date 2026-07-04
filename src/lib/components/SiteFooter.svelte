@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { siteConfig } from '$lib/config/site';
+	import { siteConfig } from "../config/site";
 
 	const { title, socials, email } = siteConfig;
 	const year = new Date().getFullYear();

@@ -1,10 +1,10 @@
 import { get, writable } from "svelte/store";
-import { browser } from "$app/environment";
 
 export type Theme = "rajevlight" | "rajevdark";
 
 const storageKey = "website-theme";
 const themeStore = writable<Theme>("rajevdark");
+const browser = typeof window !== "undefined";
 
 const applyTheme = (value: Theme, persist = true) => {
 	if (!browser) return;

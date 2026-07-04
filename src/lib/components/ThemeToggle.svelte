@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Theme } from '$lib/stores/theme';
-	import { theme, toggleTheme } from '$lib/stores/theme';
+	import type { Theme } from "../stores/theme";
+	import { theme, toggleTheme } from "../stores/theme";
 
 	let currentTheme: Theme = 'rajevdark';
 	$: currentTheme = $theme;

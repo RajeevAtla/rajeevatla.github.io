@@ -15,6 +15,9 @@
 				"noUnusedImports": "off",
 				"noUnusedVariables": "off",
 				"noUnknownProperty": "off"
+			},
+			"a11y": {
+				"noSvgWithoutTitle": "off"
 			}
 		}
 	},

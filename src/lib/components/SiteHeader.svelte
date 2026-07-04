@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-	import { siteConfig } from '$lib/config/site';
+	import { siteConfig } from "../config/site";
+	import ThemeToggle from "./ThemeToggle.svelte";
 
 	const { title } = siteConfig;
 
@@ -11,12 +10,11 @@
 		}
 
 		if (href === '/') {
-			return base || '/';
+			return './';
 		}
 
-		return `${base}${href}`;
+		return href;
 	};
-
 </script>
 
 <header class="border-b bg-base-100/90 backdrop-blur">
@@ -30,16 +28,3 @@
 	</div>
 </header>
 
-<style>
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-</style>
