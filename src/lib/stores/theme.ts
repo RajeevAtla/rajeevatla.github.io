@@ -4,48 +4,59 @@ export type Theme = "rajevlight" | "rajevdark";
 
 const storageKey = "website-theme";
 const themeStore = writable<Theme>("rajevdark");
-const browser = typeof window !== "undefined";
+let preference: Theme | undefined;
 
-const applyTheme = (value: Theme, persist = true) => {
-	if (!browser) return;
-	document.documentElement.dataset.theme = value;
-	document.documentElement.style.colorScheme =
-		value === "rajevdark" ? "dark" : "light";
-	if (persist) {
-		localStorage.setItem(storageKey, value);
+const readPreference = (): Theme | undefined => {
+	try {
+		const stored = localStorage.getItem(storageKey);
+		return stored === "rajevlight" || stored === "rajevdark"
+			? stored
+			: undefined;
+	} catch {
+		return undefined;
 	}
 };
 
-if (browser) {
-	const stored =
-		(localStorage.getItem(storageKey) as Theme | null) ?? undefined;
-	const systemPrefersDark = window.matchMedia(
-		"(prefers-color-scheme: dark)",
-	).matches;
-	const system = systemPrefersDark ? "rajevdark" : "rajevlight";
-	const initial = stored ?? system;
-
-	themeStore.set(initial);
-	applyTheme(initial, false);
-
-	themeStore.subscribe((value) => applyTheme(value));
-
+// Called once by ThemeToggle on mount; never mutates state during SSR.
+export const initializeTheme = () => {
 	const media = window.matchMedia("(prefers-color-scheme: dark)");
+	preference = readPreference();
+	themeStore.set(preference ?? (media.matches ? "rajevdark" : "rajevlight"));
+
+	const unsubscribe = themeStore.subscribe((value) => {
+		document.documentElement.dataset.theme = value;
+		document.documentElement.style.colorScheme =
+			value === "rajevdark" ? "dark" : "light";
+	});
 	const onSystemChange = (event: MediaQueryListEvent) => {
-		if (!localStorage.getItem(storageKey)) {
+		if (!preference) {
 			themeStore.set(event.matches ? "rajevdark" : "rajevlight");
 		}
 	};
 	media.addEventListener("change", onSystemChange);
-}
+
+	return () => {
+		unsubscribe();
+		media.removeEventListener("change", onSystemChange);
+	};
+};
 
 export const theme = {
 	subscribe: themeStore.subscribe,
 };
 
-export const setTheme = (value: Theme) => themeStore.set(value);
+export const setTheme = (value: Theme) => {
+	if (typeof window === "undefined") return;
+	preference = value;
+	themeStore.set(value);
+	try {
+		localStorage.setItem(storageKey, value);
+	} catch {
+		// Keep the selected theme for this session when storage is unavailable.
+	}
+};
 
 export const toggleTheme = () => {
 	const next = get(themeStore) === "rajevdark" ? "rajevlight" : "rajevdark";
-	themeStore.set(next);
+	setTheme(next);
 };

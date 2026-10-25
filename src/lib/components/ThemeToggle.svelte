@@ -1,14 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Theme } from "../stores/theme";
-	import { theme, toggleTheme } from "../stores/theme";
+	import { initializeTheme, theme, toggleTheme } from "../stores/theme";
 
 	let currentTheme: Theme = 'rajevdark';
 	$: currentTheme = $theme;
 
 	let mounted = false;
 	onMount(() => {
+		const cleanup = initializeTheme();
 		mounted = true;
+		return cleanup;
 	});
 
 	$: effectiveTheme = mounted ? currentTheme : 'rajevdark';

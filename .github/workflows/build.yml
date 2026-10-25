@@ -24,15 +24,6 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install dependencies
-        run: bun install
-
-      - name: Configure GitHub Pages base path
-        run: |
-          {
-            echo 'GITHUB_PAGES=true'
-            echo "BASE_PATH=/${GITHUB_REPOSITORY##*/}"
-          } >> $GITHUB_ENV
 
       - name: Type check
         run: bun run check
