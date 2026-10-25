@@ -24,6 +24,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: install deps
+        run: bun install
+
 
       - name: Type check
         run: bun run check
